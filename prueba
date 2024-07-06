@@ -1,0 +1,127 @@
+Entiendo, parece que la estructura de Google Sites no permite fácilmente la superposición de elementos en toda la página utilizando un modal estándar. Vamos a intentar otra solución utilizando un enfoque más adaptable dentro de los límites de Google Sites. Puedes usar un iframe embebido con estilos para mostrar el contenido en un pop-up.
+
+### Código Alternativo para Google Sites:
+
+Este enfoque utiliza un iframe que contiene el modal. Aquí está el código HTML y CSS:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Estilos para el pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Botón para abrir el pop-up -->
+<button id="myBtn">Donar con Western Union</button>
+
+<!-- El pop-up -->
+<div id="myModal" class="modal">
+
+  <!-- Contenido del pop-up -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Instrucciones para Donar a través de Western Union</h2>
+    <p><strong>Nombre Completo:</strong> Julian Arismendy</p>
+    <p><strong>País:</strong> Colombia</p>
+    <p><strong>Ciudad:</strong> Bogotá</p>
+    <p><strong>Correo Electrónico:</strong> julian@example.com</p>
+    <p>1. Visita una oficina de Western Union o utiliza su sitio web.</p>
+    <p>2. Proporciona la información anterior.</p>
+    <p>3. Ingresa la cantidad que deseas donar.</p>
+    <p>4. Elige el método de envío (Recoger en Efectivo o Transferencia a Cuenta Bancaria).</p>
+    <p>5. Completa la transacción y recibe el Número de Control de Transferencia (MTCN).</p>
+    <p>6. Envía el MTCN y los detalles del envío a julian@example.com.</p>
+  </div>
+
+</div>
+
+<script>
+    // Obtener el modal
+    var modal = document.getElementById("myModal");
+
+    // Obtener el botón que abre el modal
+    var btn = document.getElementById("myBtn");
+
+    // Obtener el elemento <span> que cierra el modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Cuando el usuario hace clic en el botón, abre el modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // Cuando el usuario hace clic en <span> (x), cierra el modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Cuando el usuario hace clic en cualquier lugar fuera del modal, lo cierra
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+</body>
+</html>
+```
+
+### Instrucciones para Insertar en Google Sites:
+
+1. **Copia el Código HTML**: Copia el código HTML y CSS proporcionado arriba.
+
+2. **Sube el Código a un Servicio de Alojamiento**:
+   - Usa un servicio de alojamiento gratuito como GitHub Pages para alojar el código. Puedes crear un repositorio en GitHub, subir el archivo HTML y habilitar GitHub Pages en la configuración del repositorio.
+
+3. **Obtén la URL del Archivo HTML**:
+   - Después de subir el archivo y habilitar GitHub Pages, obtén la URL del archivo HTML. Será algo como `https://tu-usuario.github.io/tu-repositorio/nombre-del-archivo.html`.
+
+4. **Insertar el iFrame en Google Sites**:
+   - Abre tu Google Sites y navega a la página donde deseas agregar el botón.
+   - Haz clic en "Insertar" en el menú de la derecha.
+   - Selecciona "Incrustar" y luego "URL".
+   - Pega la URL del archivo HTML alojado en GitHub Pages y haz clic en "Insertar".
+
+### Cómo Funciona:
+
+- **iFrame Embebido**: El contenido del pop-up estará dentro de un iframe que se mostrará sobre toda la pantalla.
+- **Estilos CSS Ajustados**: El modal tendrá una posición fija y un `z-index` elevado para asegurarse de que se superponga a otros elementos en la página.
+
+Este enfoque debería permitir que el pop-up se muestre correctamente sobre cualquier otro contenido en tu sitio web, independientemente de la sección específica donde se inserte el código.
