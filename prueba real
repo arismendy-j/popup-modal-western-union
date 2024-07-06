@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Estilos para el pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Botón para abrir el pop-up -->
+<button id="myBtn">Donar con Western Union</button>
+
+<!-- El pop-up -->
+<div id="myModal" class="modal">
+
+  <!-- Contenido del pop-up -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Instrucciones para Donar a través de Western Union</h2>
+    <p><strong>Nombre Completo:</strong> Julian Arismendy</p>
+    <p><strong>País:</strong> Colombia</p>
+    <p><strong>Ciudad:</strong> Bogotá</p>
+    <p><strong>Correo Electrónico:</strong> julian@example.com</p>
+    <p>1. Visita una oficina de Western Union o utiliza su sitio web.</p>
+    <p>2. Proporciona la información anterior.</p>
+    <p>3. Ingresa la cantidad que deseas donar.</p>
+    <p>4. Elige el método de envío (Recoger en Efectivo o Transferencia a Cuenta Bancaria).</p>
+    <p>5. Completa la transacción y recibe el Número de Control de Transferencia (MTCN).</p>
+    <p>6. Envía el MTCN y los detalles del envío a julian@example.com.</p>
+  </div>
+
+</div>
+
+<script>
+    // Obtener el modal
+    var modal = document.getElementById("myModal");
+
+    // Obtener el botón que abre el modal
+    var btn = document.getElementById("myBtn");
+
+    // Obtener el elemento <span> que cierra el modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Cuando el usuario hace clic en el botón, abre el modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // Cuando el usuario hace clic en <span> (x), cierra el modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Cuando el usuario hace clic en cualquier lugar fuera del modal, lo cierra
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+</body>
+</html>
